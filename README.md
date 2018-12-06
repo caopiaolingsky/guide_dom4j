@@ -1,3 +1,10 @@
-# My Awesome Book
+# 深入解析Dom4j
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+本文档是基于国科大王伟老师的面向对象程序设计课程所作的一个对Dom4j的较为全面的深入解析。主要内容分为3个部分：
+
+第一部分：Dom4j的功能与使用
+
+第二部分：Dom4j的核心类、对象、运作原理
+
+第三部分：Dom4j的高级设计意图
+
