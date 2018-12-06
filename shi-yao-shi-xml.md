@@ -8,16 +8,14 @@ XML是一种可拓展的标记语言。在说XML之前，先介绍一个大家�
 
 ![](/assets/dhsh_index.png)
 
-这样的网页你可能会经常看到吧？
-
-
+这样的网页你可能会经常看到吧？它是我从我非常喜欢的一个网页游戏中截取出来的，这里它正提醒我登录的书签失效了，需要重新登录
 
 ```html
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html>
 <head>
-	<title>大话水浒_书签失效</title>
-	<script src="http://203.195.129.90/html/js/wml2html.js"></script>
-	<link href="http://203.195.129.90/html/css/gamestyle.css" type="text/css" rel="stylesheet"/>
+    <title>大话水浒_书签失效</title>
+    <script src="http://203.195.129.90/html/js/wml2html.js"></script>
+    <link href="http://203.195.129.90/html/css/gamestyle.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div id="main_body">
@@ -36,14 +34,6 @@ XML是一种可拓展的标记语言。在说XML之前，先介绍一个大家�
 </div>
 </body></html>
 ```
-
-
-
-
-
-
-
-
 
 dom4j，顾名思义，它就是支持对XML文件进行**DOM操作**的一个类库。那么什么是DOM操作呢？事实上，DOM操作就在我们每个人的日常生活中。你每天浏览网页（静态网页除外）其实就是在执行DOM操作。
 
