@@ -6,4 +6,6 @@
   * [什么是XML](shi-yao-shi-xml.md)
   * [什么是Dom操作](chapter1/shi-yao-shi-dom-cao-zuo.md)
   * [Dom4j的大概组成](dom4jde-da-gai-zu-cheng.md)
+* [Part2:Dom4j的核心类、对象、运作原理](part2dom4jde-he-xin-lei-3001-dui-xiang-3001-yun-zuo-yuan-li.md)
+  * Dom4j的核心类
 
