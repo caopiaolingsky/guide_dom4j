@@ -72,13 +72,15 @@
 
 基于XML文档的树状结构，可以较为容易地实现对XML文档中元素的增删改查。**用于获取、更改、添加或删除 XML 元素的一系列标准操作就被称为XML的DOM操作。**在DOM中，一个XML文档被这样定义：
 
-* 整个XML文档是一个文档节点
+* 整个XML文档是一个文档节点\(Document\)
 
-* 每个 XML 标签是一个元素节点
+* 每个 XML 标签是一个元素节点\(Element\)
 
-* 包含在 XML 元素中的文本是文本节点
-* 每一个 XML 属性是一个属性节点
-* 注释属于注释节点
+* 每一个 XML 属性是一个属性节点\(Attribute\)
+
+* 包含在 XML 元素中的文本是文本节点\(Text\)
+
+* 注释属于注释节点\(Comment\)
 
 常用的XML DOM节点操作有：
 
@@ -91,4 +93,6 @@
 * 克隆节点
 
 一般而言，对XML文档的解析就是指对XML的DOM操作，即增删改查XML文档中的元素内容，将XML文档中的数据转化为适合Java等其他语言程序处理的格式，或者将Java等其他语言程序生成的数据转化成XML格式的内容，从而便于存储和传输。使用DOM操作对XML进行解析就正好扮演了这样一个桥梁角色。Dom4j提供了一系列接口、类、方法，就是为了方便大家在编写Java程序时与XML格式数据打交道。
+
+如果你想了解更多关于XML Dom的知识，请看这个XML Dom教程：[http://www.runoob.com/dom/dom-tutorial.html](http://www.runoob.com/xml/xml-tutorial.html)
 
