@@ -150,3 +150,29 @@ public interface Branch extends Node {
 
 ...
 
+Element接口（Element.java）
+
+Element接口继承自Branch接口，代表标签元素节点，例如`<tagName>...</tagName>`。其接口定义如下：
+
+```java
+public interface Element extends Branch {
+	// Name and namespace related methods
+	// -------------------------------------------------------------------------
+
+	QName getQName();
+
+	void setQName(QName qname);
+
+	Namespace getNamespace();
+
+	QName getQName(String qualifiedName);
+```
+
+可以看到在Element接口里定义了许多标签元素节点的特色行为：
+
+`getQName()`方法：获取元素节点的qualified name
+
+`setQName()`方法：设置元素节点的qualified name
+
+`getNamespace()`方法：获取当前元素节点的名字空间
+
