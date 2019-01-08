@@ -7,6 +7,7 @@
 在Dom4j中定义了Visitor接口，以便支持Visitor模式：
 
 ```java
+// Visitor.java
 public interface Visitor {
 
     void visit(Document document);
@@ -14,8 +15,30 @@ public interface Visitor {
     void visit(DocumentType documentType);
 
     void visit(Element node);
-    
+
     ...
+```
+
+然后在每个元素类内部为对象定义了accept方法，例如在Element的抽象类中有如下方法：
+
+```java
+public void accept(Visitor visitor) {
+	visitor.visit(this);
+
+	// visit attributes
+	for (int i = 0, size = attributeCount(); i < size; i++) {
+		Attribute attribute = attribute(i);
+
+		visitor.visit(attribute);
+	}
+
+	// visit content
+	for (int i = 0, size = nodeCount(); i < size; i++) {
+		Node node = node(i);
+
+		node.accept(visitor);
+	}
+}
 ```
 
 
