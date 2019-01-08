@@ -99,10 +99,10 @@ public class DocumentFactory implements Serializable {
         return singleton.instance();
     }
 
-  
+
     private static SingletonStrategy<DocumentFactory> createSingleton() {
     SingletonStrategy<DocumentFactory> result;
-    
+
     String documentFactoryClassName;
     try {
     documentFactoryClassName = System.getProperty("org.dom4j.factory",
@@ -110,7 +110,7 @@ public class DocumentFactory implements Serializable {
     } catch (Exception e) {
     documentFactoryClassName = "org.dom4j.DocumentFactory";
     }
-    
+
     try {
     String singletonClass = System.getProperty(
     "org.dom4j.DocumentFactory.singleton.strategy",
@@ -120,13 +120,15 @@ public class DocumentFactory implements Serializable {
     } catch (Exception e) {
     result = new SimpleSingleton<DocumentFactory>();
     }
-    
+
     result.setSingletonClassName(documentFactoryClassName);
-    
+
     return result;
     }
     ...
 ```
+
+* 分析该代码容易发现，单例类DocumentFactory定义了一个私有的static属性singleton用于存放持有自己的唯一实例。它的构造方法`DocumentFactory()`也被定义成了private的，这就使得该类不能被new出一个实例，而只能通过调用类的方法来产生实例。这里是通过类方法`getInstance()`来获得类的唯一实例，注意必须是类方法即被static修饰的，因为不能通过实例方法来创建实例，毕竟这里只有一个实例。而且由于static域的singleton属性是共享的就保证了DocumentFactory类的实例的唯一性。`grtInstance()`方法被多次调用，也不会跟新该实例，除非reset，因为`getInstance()`只有在`singleton=null`的条件满足时才创建实例，而这只在创建第一个实例或是reset后才满足条件。
 
 
 
