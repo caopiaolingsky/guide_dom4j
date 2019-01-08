@@ -66,7 +66,7 @@ public class DocumentFactory implements Serializable {
 
 我们可以看到它的构造方法DocumentFactory方法定义成了public型，这样就破坏了单例类只能通过Instance操作实例化的要求。但其实不然，遍历Dom4j的源代码可以发现，没有地方直接使用了（除了后面立马说的）DocumentFactory这个类。其他User类都是通过一个DocumentHelper类来实现对DocumentFactory类的使用的。而DocumentHelper类的构造方法就是私有的，它只能通过调用类方法getDocumentFactory\(\)来实现对DocumentFactory类的实例化，实例化后的对象将存储在DocumentFactory类的一个static域里：
 
-```
+```java
 public final class DocumentHelper {
     private DocumentHelper() {
     }
