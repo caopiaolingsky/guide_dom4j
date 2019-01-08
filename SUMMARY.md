@@ -11,7 +11,6 @@
   * [Dom4j的大概文件组成](dom4jde-da-gai-zu-cheng.md)
   * [Dom4j的核心接口](dom4jde-he-xin-lei.md)
   * [Dom4j的核心类](dom4jru-he-yun-zuo.md)
-    * 作者的话
 * [Dom4j的高级设计意图](dom4jde-gao-ji-she-ji-yi-tu.md)
   * [Dom4j中Factory模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhong-factory-mo-shi-de-shi-yong.md)
   * [Dom4j中Singleton模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhongsingleton-mo-shi-de-shi-yong.md)
