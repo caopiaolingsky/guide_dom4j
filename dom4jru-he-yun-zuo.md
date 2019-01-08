@@ -59,8 +59,11 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
     public boolean isReadOnly() {
         return true;
     }
-
 ```
 
+在Node抽象类里，对节点的共同行为进行了一些实现。代码比较简单，这里就不解释了。
 
+#### 其他抽象类
+
+对应的还有AbstractCharacterData、AbstractComment、AbstractBranch、AbstractElenmen类，它们都是对相应节点的接口进一步进行实现，以便逐渐描述出对应节点的类。它们之间的关系同对应接口的关系一样，这里就不再赘述了。请看面的接口关系分析部分。通过这些类，Dom4j基本完成了对XML文档树所有节点对象的建模，其他也就简单了。
 
