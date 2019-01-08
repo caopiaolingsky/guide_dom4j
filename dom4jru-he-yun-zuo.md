@@ -8,3 +8,59 @@
 
 同Node接口是所有节点接口的原型一样，Node抽象类AbstractNode也是所有抽象节点的基类。其部分代码如下：
 
+```java
+public abstract class AbstractNode implements Node, Cloneable, Serializable {
+    protected static final String[] NODE_TYPE_NAMES = {"Node", "Element",
+            "Attribute", "Text", "CDATA", "Entity", "Entity",
+            "ProcessingInstruction", "Comment", "Document", "DocumentType",
+            "DocumentFragment", "Notation", "Namespace", "Unknown" };
+
+    /** The <code>DocumentFactory</code> instance used by default */
+    private static final DocumentFactory DOCUMENT_FACTORY = DocumentFactory
+            .getInstance();
+
+    public AbstractNode() {
+    }
+
+    public short getNodeType() {
+        return UNKNOWN_NODE;
+    }
+
+    public String getNodeTypeName() {
+        int type = getNodeType();
+
+        if ((type < 0) || (type >= NODE_TYPE_NAMES.length)) {
+            return "Unknown";
+        }
+
+        return NODE_TYPE_NAMES[type];
+    }
+
+    public Document getDocument() {
+        Element element = getParent();
+
+        return (element != null) ? element.getDocument() : null;
+    }
+
+    public void setDocument(Document document) {
+    }
+
+    public Element getParent() {
+        return null;
+    }
+
+    public void setParent(Element parent) {
+    }
+
+    public boolean supportsParent() {
+        return false;
+    }
+
+    public boolean isReadOnly() {
+        return true;
+    }
+
+```
+
+
+
