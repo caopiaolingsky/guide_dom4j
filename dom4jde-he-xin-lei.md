@@ -57,41 +57,41 @@ public interface Node extends Cloneable {
 
 Dom4j中实现的节点类型有：
 
-ANY\_NODE：代表任意节点
+`ANY_NODE`：代表任意节点
 
-ELEMENT\_NODE：代表元素节点
+`ELEMENT_NODE`：代表元素节点
 
-ATTRIBUTE\_NODE：代表属性节点
+`ATTRIBUTE_NODE`：代表属性节点
 
-TEXT\_NODE：代表文本节点
+`TEXT_NODE`：代表文本节点
 
-CDATA\_SECTION\_NODE：代表CDATA域节点，CDATA是一种特殊节点，它里面的内容不会被解析
+`CDATA_SECTION_NODE`：代表CDATA域节点，CDATA是一种特殊节点，它里面的内容不会被解析
 
-ENTITY\_REFERNCE\_NODE：代表一个实体引用节点
+`ENTITY_REFERNCE_NODE`：代表一个实体引用节点
 
-PROCESSING\_INSTRUCTION\_NODE：代表一个处理指令节点
+`PROCESSING_INSTRUCTION_NODE`：代表一个处理指令节点
 
-COMMENT\_NODE：代表一个注释节点，例如&lt;--我是注释--!&gt;
+`COMMENT_NODE`：代表一个注释节点，例如&lt;--我是注释--!&gt;
 
-DOCUMENT\_TYPE\_NODE：代表一个Document type型节点，即文档类型声明节点
+`DOCUMENT_TYPE_NODE`：代表一个Document type型节点，即文档类型声明节点
 
-NAMESPACE\_NODE：名字空间节点
+`NAMESPACE_NODE`：名字空间节点
 
 * **节点共性行为定义**
 
-supportsParent\(\)方法：调用该方法可以知道当前节点是否支持向父级节点索引访问；
+`supportsParent()`方法：调用该方法可以知道当前节点是否支持向父级节点索引访问；
 
-getParent\(\)方法：获取节点的父节点，如果该节点是root节点或不支持父级节点索引，就返回null；
+`getParent()`方法：获取节点的父节点，如果该节点是root节点或不支持父级节点索引，就返回null；
 
-setParent\(\)方法：指定当前节点的父类节点
+`setParent()`方法：指定当前节点的父类节点
 
-getDocument\(\)方法：获取当前节点所在的文档节点
+`getDocument()`方法：获取当前节点所在的文档节点
 
-isReadOnly\(\)方法：判断当前节点是否是只读、不可更改的
+`isReadOnly()`方法：判断当前节点是否是只读、不可更改的
 
-hasContent\(\)方法：判断当前节点是否是Branch型节点，即它是否有子节点
+`hasContent()`方法：判断当前节点是否是Branch型节点，即它是否有子节点
 
-getName\(\)方法：返回当前节点的名字
+`getName()`方法：返回当前节点的名字
 
 ...
 
@@ -115,7 +115,7 @@ void appendText(String text);
 }
 ```
 
-可以看到，CharacterData接口为所有自接口声明了appendtext\(\)方法，即向自己添加文本内容。
+可以看到，CharacterData接口为所有自接口声明了`appendtext()`方法，即向自己添加文本内容。
 
 #### Attribute接口（Attribute.java）
 
@@ -131,22 +131,22 @@ Branch接口定义的部分代码如下：
 
 ```java
 public interface Branch extends Node {
-	Node node(int index) throws IndexOutOfBoundsException;
+    Node node(int index) throws IndexOutOfBoundsException;
 
-	int indexOf(Node node);
+    int indexOf(Node node);
 
-	int nodeCount();
+    int nodeCount();
 
-	Element elementByID(String elementID);
+    Element elementByID(String elementID);
 ```
 
 可以看到，在Branch接口里定义了许多具有枝干节点特色的行为方法：
 
-node\(int index\)方法：通过给定索引index返回当前Branch节点的子节点列表中的一个节点；
+`node(int index)`方法：通过给定索引index返回当前Branch节点的子节点列表中的一个节点；
 
-indexOf\(Node node）方法：如果给定参数中的节点是当前Branch节点的子节点，就返回该节点在子节点列表中的索引；
+`indexOf(Node node）`方法：如果给定参数中的节点是当前Branch节点的子节点，就返回该节点在子节点列表中的索引；
 
-nodeCount\(\)方法：返回当前Branch节点的子节点个数
+`nodeCount()`方法：返回当前Branch节点的子节点个数
 
 ...
 
