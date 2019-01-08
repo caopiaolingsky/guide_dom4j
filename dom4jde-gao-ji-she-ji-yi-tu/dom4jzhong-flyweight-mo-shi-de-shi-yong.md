@@ -34,3 +34,23 @@ Dom4j中以下几类节点都实现了flyweight对象：
 
 根据前面所说的Flyweight模式的要素，结合Attribute类节点，下面具体说明Attribute节点是如何实现flyweight对象的。
 
+Flyweight类的实现非常简单，里面只包含属性节点可有的共享属性：
+
+```java
+public class FlyweightAttribute extends AbstractAttribute {
+    /** The <code>QName</code> for this element */
+    private QName qname;
+
+    /** The value of the <code>Attribute</code> */
+    protected String value;
+
+    public FlyweightAttribute(QName qname) {
+        this.qname = qname;
+    }
+...
+```
+
+
+
+
+
