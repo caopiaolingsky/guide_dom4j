@@ -8,7 +8,9 @@ Dom4j既然是采用面向对象的编程哲学来解决XML的解析问题的，
 
 Node接口是一个节点接口原型，XML文档树上所有的节点接口都继承自Node接口，如下图所示：
 
-![](/assets/nodetree1.png)Node接口的部分实现代码如下：
+![](/assets/nodetree1.png)
+
+Node接口的部分实现代码如下：
 
 ```java
 public interface Node extends Cloneable {
@@ -93,6 +95,5 @@ getName\(\)方法：返回当前节点的名字
 
 ...
 
-  
 
 
