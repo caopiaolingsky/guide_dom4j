@@ -22,23 +22,19 @@
 
 **dom**：XML文档树上各节点的DOM操作方法实现类
 
-dtd：定义XML文档中document type域，使得支持自定义风格的XML文档
+**dtd**：定义XML文档中document type域，使得支持自定义风格的XML文档
 
-io：XML解析器的读写文件类，主要与硬盘文件打交道
+**io**：XML解析器的读写文件类，主要与硬盘文件打交道
 
-jaxb：jaxb的全称是
+**jaxb**：jaxb的全称是Java Architecture for XML Binding相当于一层适配器，使得Dom4j支持jaxb操作，即让Dom4j支持将XML文档元素绑定生成为Java类。
 
-Java Architecture for XML Binding
+**rule**：包含XML解析的一些模式Pattern、过滤器filter、规则集rule set
 
-相当于一层适配器，使得Dom4j支持jaxb操作，即让Dom4j支持将XML文档元素绑定生成为Java类。
+**swing**：一层适配器，实现Dom4j里的XML 里文档树节点和Java Swing组件树节点接口的绑定
 
-rule：包含XML解析的一些模式Pattern、过滤器filter、规则集rule set
+**tree**：定义了XML文档树中各个节点类，形成文档树结构
 
-swing：一层适配器，实现Dom4j里的XML 里文档树节点和Java Swing组件树节点接口的绑定
-
-tree：定义了XML文档树中各个节点类，形成文档树结构
-
-util：Dom操作方法实现需要用到的工具类
+**util**：Dom操作方法实现需要用到的工具类
 
 ##### 其他文件：
 
