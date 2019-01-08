@@ -58,5 +58,7 @@ public class FlyweightAttribute extends AbstractAttribute {
     }
 ```
 
-可以看到虽然调用者仍认为创建一个属性节点时需要知道这个属性依附于那哪个element节点，但创建方法却忽略了这个参数（也就是使用者不用关心内部是否使用了flyweight对象，体现了封装隔离特性。不过Dom4j未能实现flyweight共享池（或者我暂时没有找到）。
+可以看到虽然调用者仍认为创建一个属性节点时需要知道这个属性依附于那哪个element节点，但创建方法却忽略了这个参数（也就是使用者不用关心内部是否使用了flyweight对象，体现了封装隔离特性。不过Dom4j未能实现flyweight共享池（或者我暂时没有找到）：
+
+![](/assets/flyweight.png)
 
