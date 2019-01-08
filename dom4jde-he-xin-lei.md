@@ -103,52 +103,42 @@ CharacterData接口继承自Node接口，它代表XML文档树中所有的叶子
 
 可以看到，CDATA节点、Comment节点、Text节点的接口都继承自Charcater接口。因为CDATA节点域内部的内容是不允许被解析的，自然它也就不可能含有子节点了；Comment是注释节点，形如
 
-&lt;
+`<--我是注释节点--!>`，它里面也是不可能有子节点的；Text节点是文本节点，如
 
---我是注释节点--!
-
-&gt;
-
-，它里面也是不可能有子节点的；Text节点是文本节点，如
-
-&lt;
-
-title
-
-&gt;
-
-I'm Text node except title
-
-&lt;
-
-/title
-
-&gt;
-
-，它也是不可能含有子节点的。
+`<title>I'm Text node except title</title>`，它也是不可能含有子节点的。
 
 CharacterData接口定义如下：
 
+```java
 public interface CharacterData extends Node {
-
- void appendText\(String text\);
-
+void appendText(String text);
 }
+```
 
 可以看到，CharacterData接口为所有自接口声明了appendtext\(\)方法，即向自己添加文本内容。
 
-Attribute接口（Attribute.java）
+#### Attribute接口（Attribute.java）
 
 Attribute接口直接继承于Node接口，代表属性节点，也是一种叶子节点类型，即不可含有子节点。Attribute是依附于元素节点的，因为我们只能说某个标签元素具有某个属性，在W3C标准里，属性也被单独称为属性节点。
 
-Branch接口（Branch.java）
+#### Branch接口（Branch.java）
 
-Branch接口继承自Node接口，它描述了XML文档树上的枝干节点，即可有子节点的那些节点
+Branch接口继承自Node接口，它描述了XML文档树上的枝干节点，即可有子节点的那些节点：
+
+![](/assets/bhtree.png)
 
 Branch接口定义的部分代码如下：
 
-  
+```java
+public interface Branch extends Node {
+	Node node(int index) throws IndexOutOfBoundsException;
 
+	int indexOf(Node node);
+
+	int nodeCount();
+
+	Element elementByID(String elementID);
+```
 
 可以看到，在Branch接口里定义了许多具有枝干节点特色的行为方法：
 
