@@ -30,7 +30,7 @@ Dom4j中有多个工厂类，其中一个是DocumentFactory（DocumentFactory.ja
 ```java
 public class DocumentFactory implements Serializable {
    ...
-   
+
     // Factory methods
     public Document createDocument() {
         DefaultDocument answer = new DefaultDocument();
@@ -72,5 +72,25 @@ public class DocumentFactory implements Serializable {
     ...
 ```
 
+可以看到在工厂类DocumentFactory中定义了许多的工厂方法：
 
+`createDocumen()`方法：创建一个文档对象实例
+
+`creatDocType()`方法：创建一个Document Type节点对象实例
+
+`createElement()`方法：创建一个Element元素节点对象实例
+
+`createAttribute()`方法：创建一个Attribute属性节点对象实例
+
+
+
+另外对于每个工厂方法，工厂类都没有直接给出具体的实现，而是通过组合这一代码复用方式调用相应节点的类来实例化具体产品对象。同时，借助帮助子类（如DefaultElement）构造方法的重载特性，实现了多种参数调用下产生相应实例的效果。
+
+Dom4j里这里实现工厂模式的类关系图如下：
+
+![](/assets/factory.png)
+
+
+
+工厂模式为大量创建对象时提供了方便。同时，它解除了用户（User）和具体实例类间的耦合，在这里，创建Document、Element对象的人不用太关注DefaultDocument、DefaultElement类是如何实现的，它只管调用工厂方法就是了。就像客户到工厂里买产品，它只管走在工厂里买相应的产品的流程，而不用去关注做这个产品的工人是谁，是怎么样的等等。
 
