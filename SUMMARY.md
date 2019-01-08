@@ -8,7 +8,7 @@
   * [下载Dom4j类包](chapter1/ru-he-li-yong-dom4j-bian-cheng.md)
   * [简单使用Dom4j](chapter1/jian-dan-shi-yong-dom4j.md)
 * [Part2:Dom4j的核心类、对象、运作原理](part2dom4jde-he-xin-lei-3001-dui-xiang-3001-yun-zuo-yuan-li.md)
-  * [Dom4j的大概组成](dom4jde-da-gai-zu-cheng.md)
+  * [Dom4j的大概文件组成](dom4jde-da-gai-zu-cheng.md)
   * [Dom4j的核心接口](dom4jde-he-xin-lei.md)
   * [Dom4j的核心类](dom4jru-he-yun-zuo.md)
 * [Dom4j的高级设计意图](dom4jde-gao-ji-she-ji-yi-tu.md)

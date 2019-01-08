@@ -2,5 +2,9 @@
 
 关于XML文档对象描述的核心类都在dom4j\tree下面。通过使用上一节所讲的各个接口进行规范和约束，可以很方便地构造出各个节点的类。下面先给出XML文档树节点类的继承关系图：
 
-![](/assets/cclasstree.png)
+![](/assets/cclasstree.png)从这个类的关系图中可以大致看到，Dom4j首先是定义了各个节点的抽象类，这些抽象类都实现了相应节点的接口。再由一个DefaultNodeName的具体类继承相应节点的抽象类来实现对具体节点的定义。
+
+#### Node抽象类（AbstractNode.java）
+
+同Node接口是所有节点接口的原型一样，Node抽象类AbstractNode也是所有抽象节点的基类。其部分代码如下：
 
