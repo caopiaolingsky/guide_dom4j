@@ -12,13 +12,25 @@
 
 **参与者：**
 
-Flyweight：描述一个外部接口，通过这个接口flyweight可以接受并作用于外部状态（或称为flyweight所处的场景）。
+* Flyweight：描述一个外部接口，通过这个接口flyweight可以接受并作用于外部状态（或称为flyweight所处的场景）。
 
-ConcreteFlyweight：实现Flyweight接口，并且存储flyweight的内部状态，ConcreteFlyweight必须是共享的。
+* ConcreteFlyweight：实现Flyweight接口，并且存储flyweight的内部状态，ConcreteFlyweight必须是共享的。
 
-UnsharedConcreteFlyweight：不被共享的Flyweight子类，其通常是ConcreteFlyweight独享的父节点。
+* UnsharedConcreteFlyweight：不被共享的Flyweight子类，其通常是ConcreteFlyweight独享的父节点。
 
-FlyweightFactory：创建并管理flyweight对象，确保合理地共享flyweight。当用户请求一个flyweight时，FlyweightFactory对象提供一个已创建的实例或者再创建一个（如果不存在的话）。
+* FlyweightFactory：创建并管理flyweight对象，确保合理地共享flyweight。当用户请求一个flyweight时，FlyweightFactory对象提供一个已创建的实例或者再创建一个（如果不存在的话）。
 
-Client：维持
+* Client：维持一个对flyweight的引用，计算或存储一个（多个）flyweight的外部状态。
+
+#### Dom4j中享元模式的使用
+
+Dom4j运行得非常快，其XML解析效率也非常高，是XML解析包中的佼佼者，这很大程度上得益于Dom4j使用了Flyweight模式。Dom4j使用享元模式是非常明智的。
+
+在解析XML文档树时，由于是将整个文档树当作一个对象，每个节点都成为一个对象，如果在实际使用时将每个节点都单独实例化为一个对象，那么在XML文档很长时，就会出现危机，对内存的消耗巨大，最终使程序的性能严重较低。但根据实际情况来看，一个XML文档中，有很多的重复（严格地说是相似）节点，如Attribute属性节点、Text文本节点。由于这类节点经常重复地出现在不同的环境中，我们就可以使用共享对象（flyweight）来表示这些节点。共享对象中存有所有对象中的共性属性，它不用知道它所处的外部环境（场景）是怎样的。当要使用这个共享对象时，再由外部方法，一般是由client提供来计算当前flyiweight对象所处的环境并将之传给flyweight对象自身。
+
+Dom4j中以下几类节点都实现了flyweight对象：
+
+![](/assets/flyweights.png)
+
+根据前面所说的Flyweight模式的要素，结合Attribute类节点，下面具体说明Attribute节点是如何实现flyweight对象的。
 
