@@ -14,6 +14,6 @@
 * [Dom4j的高级设计意图](dom4jde-gao-ji-she-ji-yi-tu.md)
   * [Dom4j中Factory模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhong-factory-mo-shi-de-shi-yong.md)
   * [Dom4j中Singleton模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhongsingleton-mo-shi-de-shi-yong.md)
-  * Dom4j中Flyweight模式的使用
+  * [Dom4j中Flyweight模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhong-flyweight-mo-shi-de-shi-yong.md)
   * [Dom4j中Visitor和Adapter模式的使用](dom4jde-gao-ji-she-ji-yi-tu/dom4jzhong-visitor-mo-shi-de-shi-yong.md)
 
