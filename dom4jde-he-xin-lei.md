@@ -4,7 +4,7 @@
 
 Dom4j既然是采用面向对象的编程哲学来解决XML的解析问题的，那么Dom4j的首要工作就是建立起XML文档树的抽象对象模型。这样说的理由我前面已经说过，XML文件的内容会形成一个XML文档树结构，而每个元素、属性、文本、注释等都成为相应的节点，对XML文档的DOM解析操作就是对这棵抽象文档树上各个节点的作用。Dom4j为了建立XML文档树对象，首先它定义了一系列节点接口，用这些接口来约束规范每个节点对象所应该有的属性和方法。
 
-#### Node接口
+#### Node接口（Node.java）
 
 Node接口是一个节点接口原型，XML文档树上所有的节点接口都继承自Node接口，如下图所示：
 
@@ -95,5 +95,68 @@ getName\(\)方法：返回当前节点的名字
 
 ...
 
+#### CharacterData接口（Character.java）
 
+CharacterData接口继承自Node接口，它代表XML文档树中所有的叶子节点，即不存在子节点的节点类型：
+
+![](/assets/cdtree.png)
+
+可以看到，CDATA节点、Comment节点、Text节点的接口都继承自Charcater接口。因为CDATA节点域内部的内容是不允许被解析的，自然它也就不可能含有子节点了；Comment是注释节点，形如
+
+&lt;
+
+--我是注释节点--!
+
+&gt;
+
+，它里面也是不可能有子节点的；Text节点是文本节点，如
+
+&lt;
+
+title
+
+&gt;
+
+I'm Text node except title
+
+&lt;
+
+/title
+
+&gt;
+
+，它也是不可能含有子节点的。
+
+CharacterData接口定义如下：
+
+public interface CharacterData extends Node {
+
+ void appendText\(String text\);
+
+}
+
+可以看到，CharacterData接口为所有自接口声明了appendtext\(\)方法，即向自己添加文本内容。
+
+Attribute接口（Attribute.java）
+
+Attribute接口直接继承于Node接口，代表属性节点，也是一种叶子节点类型，即不可含有子节点。Attribute是依附于元素节点的，因为我们只能说某个标签元素具有某个属性，在W3C标准里，属性也被单独称为属性节点。
+
+Branch接口（Branch.java）
+
+Branch接口继承自Node接口，它描述了XML文档树上的枝干节点，即可有子节点的那些节点
+
+Branch接口定义的部分代码如下：
+
+  
+
+
+可以看到，在Branch接口里定义了许多具有枝干节点特色的行为方法：
+
+node\(int index\)方法：通过给定索引index返回当前Branch节点的子节点列表中的一个节点；
+
+indexOf\(Node node）方法：如果给定参数中的节点是当前Branch节点的子节点，就返回该节点在子节点列表中的索引；
+
+nodeCount\(\)方法：返回当前Branch节点的子节点个数
+
+...
 
