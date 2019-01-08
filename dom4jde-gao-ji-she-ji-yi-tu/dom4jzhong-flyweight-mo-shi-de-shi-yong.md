@@ -50,5 +50,13 @@ public class FlyweightAttribute extends AbstractAttribute {
 ...
 ```
 
+为什说在创建Attribute属性节点时没有真的创建Attribute实例对象，而是使用的flyweight对象呢。因为在DocumentFactory的Attribute构造类里是这样调用的：
 
+```java
+    public Attribute createAttribute(Element owner, QName qname, String value) {
+        return new DefaultAttribute(qname, value);
+    }
+```
+
+可以看到虽然调用者仍认为创建一个属性节点时需要知道这个属性依附于那哪个element节点，但创建方法却忽略了这个参数。
 
