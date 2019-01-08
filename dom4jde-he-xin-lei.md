@@ -156,16 +156,16 @@ Element接口继承自Branch接口，代表标签元素节点，例如`<tagName>
 
 ```java
 public interface Element extends Branch {
-	// Name and namespace related methods
-	// -------------------------------------------------------------------------
+    // Name and namespace related methods
+    // -------------------------------------------------------------------------
 
-	QName getQName();
+    QName getQName();
 
-	void setQName(QName qname);
+    void setQName(QName qname);
 
-	Namespace getNamespace();
+    Namespace getNamespace();
 
-	QName getQName(String qualifiedName);
+    QName getQName(String qualifiedName);
 ```
 
 可以看到在Element接口里定义了许多标签元素节点的特色行为：
