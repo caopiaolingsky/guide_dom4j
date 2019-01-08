@@ -61,6 +61,13 @@ public class DocumentFactory implements Serializable {
     public DocumentFactory() {
         init();
     }
+    public static synchronized DocumentFactory getInstance() {
+        if (singleton == null) {
+            singleton = createSingleton();
+        }
+        return singleton.instance();
+    }
+
     ...
 ```
 
@@ -73,6 +80,50 @@ public final class DocumentHelper {
 
     private static DocumentFactory getDocumentFactory() {
         return DocumentFactory.getInstance();
+    }
+    ...
+```
+
+为了方便对Dom4j中单例模式实现的阐述，将以上两部分代码等效改写如下\(只保留关键代码）：
+
+```java
+public class DocumentFactory implements Serializable {
+    private static SingletonStrategy<DocumentFactory> singleton = null;
+    private DocumentFactory() {
+        init();
+    }
+    public static synchronized DocumentFactory getInstance() {
+        if (singleton == null) {
+            singleton = createSingleton();
+        }
+        return singleton.instance();
+    }
+
+  
+    private static SingletonStrategy<DocumentFactory> createSingleton() {
+    SingletonStrategy<DocumentFactory> result;
+    
+    String documentFactoryClassName;
+    try {
+    documentFactoryClassName = System.getProperty("org.dom4j.factory",
+    "org.dom4j.DocumentFactory");
+    } catch (Exception e) {
+    documentFactoryClassName = "org.dom4j.DocumentFactory";
+    }
+    
+    try {
+    String singletonClass = System.getProperty(
+    "org.dom4j.DocumentFactory.singleton.strategy",
+    "org.dom4j.util.SimpleSingleton");
+    Class<SingletonStrategy> clazz = (Class<SingletonStrategy>) Class.forName(singletonClass);
+    result = clazz.newInstance();
+    } catch (Exception e) {
+    result = new SimpleSingleton<DocumentFactory>();
+    }
+    
+    result.setSingletonClassName(documentFactoryClassName);
+    
+    return result;
     }
     ...
 ```
