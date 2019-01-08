@@ -22,24 +22,29 @@ public interface Visitor {
 然后在每个元素类内部为对象定义了accept方法，例如在Element的抽象类中有如下方法：
 
 ```java
+// AbstractElement.java
 public void accept(Visitor visitor) {
-	visitor.visit(this);
+    visitor.visit(this);
 
-	// visit attributes
-	for (int i = 0, size = attributeCount(); i < size; i++) {
-		Attribute attribute = attribute(i);
+    // visit attributes
+    for (int i = 0, size = attributeCount(); i < size; i++) {
+        Attribute attribute = attribute(i);
 
-		visitor.visit(attribute);
-	}
+        visitor.visit(attribute);
+    }
 
-	// visit content
-	for (int i = 0, size = nodeCount(); i < size; i++) {
-		Node node = node(i);
+    // visit content
+    for (int i = 0, size = nodeCount(); i < size; i++) {
+        Node node = node(i);
 
-		node.accept(visitor);
-	}
+        node.accept(visitor);
+    }
 }
 ```
 
+Element的`accept()`方法首先将自身传给访问者visitor的`visit()`方法，然后依次遍历将自己的属性节点、子节点传递给visitor的`visit()`方法，以便让访问者操作。
 
+#### Dom4j中的适配器模式（Adapter Pattern）
+
+适配器模式就像其名字所描述的那样，起适配器的作用。适配器在中间作为中介，让原来不兼容的两个东西变得兼容匹配。Dom4j的核心代码只具备对XML文档的DOM操作功能，但我们前面已经提到过Dom4j同时支持SAX（simple API XML for Java），支持jaxb（Java architecture XML binding），支持swing tree binding，支持JavaBean，这都得益于Dom4j采用了适配器模式，写了一层适配器代码（如jaxb，swing文件夹下的代码），对DOM操作进行了进一步封装。这里不再赘述了，先写到这里了。
 
